@@ -1,0 +1,48 @@
+# ─── Global backtest settings ────────────────────────────────────────────────
+backtest:
+  start_date: "2020-01-01"
+  end_date:   "2024-12-31"
+  initial_cash: 10000          # Starting portfolio value in USD
+  commission: 0.001            # 0.1% per trade (realistic for a retail broker)
+  data_interval: "1d"          # "1d" = daily bars
+
+# ─── Paper trading settings ──────────────────────────────────────────────────
+paper_trading:
+  initial_cash: 10000
+  check_interval_minutes: 60   # How often to fetch the latest bar and re-evaluate
+  data_interval: "1d"
+  lookback_days: 200           # How many days of history to load on start (for indicator warmup)
+
+# ─── Risk management ─────────────────────────────────────────────────────────
+risk:
+  position_size_pct: 0.10      # Use 10% of portfolio equity per trade
+  stop_loss_pct: 0.05          # Exit if price moves 5% against position
+  max_open_trades: 1           # Only 1 open position at a time
+
+# ─── Trend following strategy ────────────────────────────────────────────────
+trend_following:
+  fast_period: 20              # Fast moving average period (bars)
+  slow_period: 50              # Slow moving average period (bars)
+  ma_type: "ema"               # "ema" or "sma"
+
+  use_macd_filter: false       # Require MACD confirmation before entering
+  macd_fast: 12
+  macd_slow: 26
+  macd_signal: 9
+
+# ─── Mean reversion strategy ─────────────────────────────────────────────────
+mean_reversion:
+  rsi_period: 14
+  rsi_oversold: 30             # BUY when RSI falls below this
+  rsi_overbought: 70           # SELL when RSI rises above this
+
+  use_bb_confirm: true         # Require price near Bollinger Band edge to enter
+  bb_period: 20
+  bb_std: 2.0                  # Standard deviations for band width
+
+# ─── Output settings ─────────────────────────────────────────────────────────
+output:
+  results_dir: "results"
+  save_csv: true
+  save_plot: true
+  plot_show: false             # Set true to open interactive chart window

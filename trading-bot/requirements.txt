@@ -1,0 +1,20 @@
+# Core data
+yfinance>=0.2.36
+pandas>=2.0.0
+numpy>=1.26.0
+
+# Technical indicators
+pandas-ta>=0.3.14b
+
+# Backtesting engine
+backtesting>=0.3.3
+
+# Config
+pyyaml>=6.0.1
+
+# Scheduling (paper trading loop)
+schedule>=1.2.0
+
+# Output / display
+matplotlib>=3.8.0
+rich>=13.7.0
